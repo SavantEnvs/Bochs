@@ -1,0 +1,15 @@
+# Whole-emulator target with the Cirrus CL-GD5446 SVGA on PCI: the fuzz input
+# is the system ROM, whose guest code drives the Cirrus registers / BitBLT engine.
+vgaromimage: file=/mayhem/bochs/bios/VGABIOS-lgpl/VGABIOS-lgpl-latest-cirrus.bin
+vga: extension=cirrus
+pci: enabled=1, chipset=i440fx, slot1=cirrus
+memory: guest=16, host=16
+display_library: nogui
+log: /dev/null
+panic: action=fatal
+error: action=report
+info: action=ignore
+debug: action=ignore
+sound: waveoutdrv=dummy, waveindrv=dummy, midioutdrv=dummy
+mouse: enabled=0
+clock: sync=none, time0=1

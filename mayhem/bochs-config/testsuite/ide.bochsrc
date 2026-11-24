@@ -1,0 +1,16 @@
+vgaromimage: file=/mayhem/bochs/bios/VGABIOS-lgpl/VGABIOS-lgpl-latest.bin
+pci: enabled=1, chipset=i440fx
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, mode=volatile, path=/mayhem/mayhem/bochs-ide/disk.img, journal=bochs-ide-disk
+ata0-slave: type=cdrom, path=/mayhem/mayhem/bochs-ide/cd.iso, status=inserted
+memory: guest=16, host=16
+display_library: nogui
+log: /dev/null
+panic: action=fatal
+error: action=report
+info: action=ignore
+debug: action=ignore
+sound: waveoutdrv=dummy, waveindrv=dummy, midioutdrv=dummy
+mouse: enabled=0
+clock: sync=none, time0=1
+romimage: file=/mayhem/bochs/bios/BIOS-bochs-latest

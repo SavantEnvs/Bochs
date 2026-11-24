@@ -1,0 +1,9 @@
+project: savantenvs/Bochs
+target: vnet
+cmds:
+  - cmd: /mayhem/mayhem/out/vnet_fuzz
+    libfuzzer: true
+    timeout: 5
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/vnet/testsuite

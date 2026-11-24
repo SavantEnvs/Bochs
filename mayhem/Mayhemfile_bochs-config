@@ -1,0 +1,9 @@
+project: savantenvs/Bochs
+target: bochs-config
+cmds:
+  - cmd: /mayhem/mayhem/out/bochs -q -f @@ -benchmark 1
+    afl: true
+    timeout: 20
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/bochs-config/testsuite

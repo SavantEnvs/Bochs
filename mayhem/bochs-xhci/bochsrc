@@ -1,0 +1,16 @@
+# Whole-emulator target with the xHCI USB 3 controller on PCI (no USB device
+# attached): the fuzz input is the system ROM, whose guest code drives
+# the xHCI MMIO registers and command/event rings in guest RAM.
+vgaromimage: file=/mayhem/bochs/bios/VGABIOS-lgpl/VGABIOS-lgpl-latest.bin
+pci: enabled=1, chipset=i440fx
+usb_xhci: enabled=1
+memory: guest=16, host=16
+display_library: nogui
+log: /dev/null
+panic: action=fatal
+error: action=report
+info: action=ignore
+debug: action=ignore
+sound: waveoutdrv=dummy, waveindrv=dummy, midioutdrv=dummy
+mouse: enabled=0
+clock: sync=none, time0=1

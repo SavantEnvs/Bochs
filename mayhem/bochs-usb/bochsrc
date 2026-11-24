@@ -1,0 +1,19 @@
+# Whole-emulator target with the legacy USB host controllers on PCI (UHCI,
+# OHCI, EHCI) and USB devices attached (keyboard, tablet). The fuzz input is the
+# system ROM, whose guest code drives the controllers' frame lists / TDs / EDs
+# in guest RAM.
+vgaromimage: file=/mayhem/bochs/bios/VGABIOS-lgpl/VGABIOS-lgpl-latest.bin
+pci: enabled=1, chipset=i440fx
+usb_uhci: enabled=1, port1=keyboard
+usb_ohci: enabled=1, port1=tablet
+usb_ehci: enabled=1
+memory: guest=16, host=16
+display_library: nogui
+log: /dev/null
+panic: action=fatal
+error: action=report
+info: action=ignore
+debug: action=ignore
+sound: waveoutdrv=dummy, waveindrv=dummy, midioutdrv=dummy
+mouse: enabled=0
+clock: sync=none, time0=1

@@ -1,0 +1,9 @@
+project: savantenvs/Bochs
+target: disasm
+cmds:
+  - cmd: /mayhem/mayhem/out/disasm_fuzz
+    libfuzzer: true
+    timeout: 5
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/disasm/testsuite

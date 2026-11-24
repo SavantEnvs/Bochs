@@ -1,0 +1,9 @@
+project: savantenvs/Bochs
+target: bochs-usb
+cmds:
+  - cmd: /mayhem/mayhem/out/bochs -q -f /mayhem/mayhem/bochs-usb/bochsrc -benchmark 1 romimage:file=@@  # mayhem-lint: ok-image-path (bochsrc is a read-only config input; bochs writes nothing, log: /dev/null)
+    afl: true
+    timeout: 20
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/bochs-usb/testsuite

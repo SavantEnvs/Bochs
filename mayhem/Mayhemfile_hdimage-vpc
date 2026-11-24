@@ -1,0 +1,9 @@
+project: savantenvs/Bochs
+target: hdimage-vpc
+cmds:
+  - cmd: /mayhem/mayhem/out/hdimage_fuzz vpc @@
+    afl: true
+    timeout: 5
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/hdimage-vpc/testsuite
